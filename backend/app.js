@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 
 //routes
 import registerClientsRoute from "./src/routes/registerClientsRoute.js"
+import registerEmployeesRoute from "./src/routes/registerEmployeesRoute.js"
 
 
 
@@ -13,5 +14,6 @@ app.use(cookieParser());
 
 //routes
 app.use("/api/registerClients", registerClientsRoute);
+app.use("/api/registerEmployees", registerEmployeesRoute);
 
 export default app;

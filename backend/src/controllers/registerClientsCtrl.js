@@ -65,7 +65,7 @@ const tokenCode = jsonwebtoken.sign(
             from: config.email.email_user,
             to: email, 
             subject: "Verificar Correo",
-            text: "Para verificar su correo utilizan el siguiente código " + verificationCode + "\n expira en dos horas"
+            text: "Para verificar su correo utilizan el siguiente código" + verificationCode + "\n expira en dos horas"
         };
 
         //3- enviar el correo
@@ -95,6 +95,7 @@ registerClientsController.verificationCode = async (req, res) =>{
         const {email, verificationCode: storedCode} = decoded;
         
         //comparar el codigo que envie por correo y esta guardado en las cookies
+        //REQUIERECODE ES LO QUE SE TIENE QUE PONER EN POSTMAN***************************
         if(requireCode !== storedCode){
                 return res.json({message:"Invalid code"});
         }
