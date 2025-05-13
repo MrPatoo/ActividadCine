@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import registerClientsRoute from "./src/routes/registerClientsRoute.js"
 import registerEmployeesRoute from "./src/routes/registerEmployeesRoute.js"
 import loginRoute from "./src/routes/loginRoute.js"
+import passwordRecoveryRoute from "./src/routes/passwordRecoveryRoute.js";
 
 
 
@@ -17,5 +18,6 @@ app.use(cookieParser());
 app.use("/api/registerClients", registerClientsRoute);
 app.use("/api/registerEmployees", registerEmployeesRoute);
 app.use("/api/login", loginRoute);
+app.use("/api/passwordRecovery", passwordRecoveryRoute);
 
 export default app;

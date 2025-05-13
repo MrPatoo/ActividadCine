@@ -43,3 +43,5 @@ const moviesSchema = new Schema({
     timestamps: true,
     strict: false
 })
+
+export default model("Movies", moviesSchema)
