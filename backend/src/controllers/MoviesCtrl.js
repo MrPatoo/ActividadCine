@@ -51,12 +51,34 @@ moviesController.deleteMovies =async(req, res) =>{
     res.json({message: "Movie deleted"})
 }
 
-//Actualizar
+//Actualizar datos con imagenes***********************
 moviesController.putMovies = async(req, res) =>{
-    const{title, description, director, genre, year, duration, image}=req.body
-    const updateMovie = await moviesModel.findByIdAndUpdate(req.params.id, {title, description, director, genre, year, duration, image: imageUrl}, {new: true})
 
-    res.json({message: "Movie updated successfully"})
+    try {
+        const{title, description, director, genre, year, duration} = req.body;
+        let imageUrl = ""
+
+        if(req.file){
+            const result = await cloudinary.uploader.upload(
+                req.file.path,
+                {
+                    folder: "public",
+                    allowed_formats: ["jpg", "png", "jpeg"]
+                }
+            )
+            imageUrl= result.secure_url
+        }
+        await moviesModel.findByIdAndUpdate(req.param.id,
+            {
+                title, description, director, genre, year, duration, image: imageUrl
+            }
+        )
+        res.json({message: "movie Updated"})
+
+    } catch (error) {
+        console.log("error"+ error);
+    }
+
 }
 
 export default moviesController;

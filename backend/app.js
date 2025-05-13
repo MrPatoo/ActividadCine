@@ -8,6 +8,8 @@ import loginRoute from "./src/routes/loginRoute.js"
 import logoutRoute from "./src/routes/logoutRoute.js"
 import passwordRecoveryRoute from "./src/routes/passwordRecoveryRoute.js";
 import moviesRoute from "./src/routes/MoviesRoute.js"
+import clientsRoute from "./src/routes/clientsRoute.js"
+import employeesRoute from "./src/routes/employeeRoute.js"
 
 const app = express();
 
@@ -21,5 +23,7 @@ app.use("/api/login", loginRoute);
 app.use("/api/logout", logoutRoute);
 app.use("/api/passwordRecovery", passwordRecoveryRoute);
 app.use("/api/movies", moviesRoute);
+app.use("/api/clients", clientsRoute);
+app.use("/api/employees", employeesRoute);
 
 export default app;
