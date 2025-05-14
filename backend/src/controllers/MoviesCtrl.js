@@ -46,7 +46,7 @@ moviesController.postMovies = async (req, res)=>{
 
 //Eliminar
 moviesController.deleteMovies =async(req, res) =>{
-    await moviesModel.findByIdAndDelete(req.param.id)
+    await moviesModel.findByIdAndDelete(req.params.id)
 
     res.json({message: "Movie deleted"})
 }
@@ -68,7 +68,7 @@ moviesController.putMovies = async(req, res) =>{
             )
             imageUrl= result.secure_url
         }
-        await moviesModel.findByIdAndUpdate(req.param.id,
+        await moviesModel.findByIdAndUpdate(req.params.id,
             {
                 title, description, director, genre, year, duration, image: imageUrl
             }
